@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muabdul- <muabdul-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 22:31:23 by muabdul-          #+#    #+#             */
-/*   Updated: 2024/11/06 22:34:56 by muabdul-         ###   ########.fr       */
+/*   Created: 2024/11/06 22:52:03 by muabdul-          #+#    #+#             */
+/*   Updated: 2024/11/06 22:57:26 by muabdul-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-void*   ft_bzero(void *b, size_t len) {
-    char *temp = (char *)b;
-    while(len != 0) {
-        *temp = '\0';
-        temp++;
-        len--;
-    }
-    return temp;
+int ft_toupper(int ch) {
+    if(ch >= 97 && ch <= 122) 
+        ch -= 32;
+    return ch;
 }
