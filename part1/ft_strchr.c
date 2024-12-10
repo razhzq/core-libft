@@ -10,18 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int strlen(char *str) {
-    int count = 0;
-    while(str[count] != NULL) {
-        count++;
+#include <stdio.h>
+
+char* ft_strchr(const char *str, int c) {
+    
+    if (c == '\0') {
+        return (char *)str;
     }
-    return count;
-}
 
-
-char* ft_strchr(const char *str, int search_str) {
-    int len = strlen(str);
-    if(str[len / 2] == search_str)
-        return str;
+    while (*str != '\0')
+    {
+       if(*str == (char)c) {
+        return (char *)str;
+       }
+       str++;
+    }
+    return NULL;
+    
     
 }
+
+int main() {
+    const char *string = "Hello, world!";
+    char ch = 'w';
+
+    char *result = ft_strchr(string, ch);
+    if (result) {
+        printf("Character '%c' found at position: %ld\n", ch, result - string);
+    } else {
+        printf("Character '%c' not found.\n", ch);
+    }
+    return 0;
+}
+
+
