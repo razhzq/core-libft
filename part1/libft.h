@@ -6,6 +6,7 @@
 
 int ft_strlen(char *s);
 void*   ft_bzero(void *b, size_t len);
+char *ft_itoa(int n);
 
 
 #endif
