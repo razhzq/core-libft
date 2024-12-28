@@ -19,17 +19,3 @@ char* ft_strrchr(const char *str, int c) {
     return NULL;
 
 }
-
-int main() {
-    const char *string = "Hello, world!";
-    char ch = 'o';
-
-    char *result = ft_strrchr(string, ch);
-    if (result) {
-        printf("Last occurrence of '%c': %s\n", ch, result);
-    } else {
-        printf("Character '%c' not found.\n", ch);
-    }
-
-    return 0;
-}

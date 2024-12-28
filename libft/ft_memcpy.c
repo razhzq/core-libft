@@ -1,5 +1,4 @@
-#include <stddef.h>
-#include <stdio.h>
+#include "libft.h"
 
 
 void*   ft_memcpy(void *dst, const void *src, size_t n) {
@@ -15,13 +14,4 @@ void*   ft_memcpy(void *dst, const void *src, size_t n) {
         n--;
     }
     return dst;
-}
-
-
-
-int main(void) {
-        char dest_str[] = "12345678"; 
-    ft_memcpy(dest_str, dest_str + 3, 5);
-    printf("%s", dest_str);
-    return 0;
 }

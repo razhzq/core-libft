@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 char* ft_strchr(const char *str, int c) {
     
@@ -28,19 +28,6 @@ char* ft_strchr(const char *str, int c) {
     return NULL;
     
     
-}
-
-int main() {
-    const char *string = "Hello, world!";
-    char ch = 'w';
-
-    char *result = ft_strchr(string, ch);
-    if (result) {
-        printf("Character '%c' found at position: %ld\n", ch, result - string);
-    } else {
-        printf("Character '%c' not found.\n", ch);
-    }
-    return 0;
 }
 
 

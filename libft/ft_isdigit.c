@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include <stdio.h>
+#include "libft.h"
 
 int ft_isdigit(int c) {
     if(!(c >= 48 && c <= 57))
@@ -19,9 +19,3 @@ int ft_isdigit(int c) {
     return 1;
 }
 
-int main(void) {
-	char testChar = '+';
-	int test = ft_isdigit(testChar);
-	printf("%i", test);
-	return 0;
-}

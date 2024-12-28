@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muabdul- <muabdul-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 22:36:11 by muabdul-          #+#    #+#             */
-/*   Updated: 2024/11/06 22:51:37 by muabdul-         ###   ########.fr       */
+/*   Created: 2024/11/04 21:28:30 by muabdul-          #+#    #+#             */
+/*   Updated: 2024/11/04 21:33:04 by muabdul-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strlcat(char *dst, const char *src, size_t dstsize) {
-    int count = 0;
-    int i = 0;
-    int j = 0;
-    int limiter = dstsize -1;
+#include "libft.h"
 
-    while(dest[i] != NULL) {
-        i++;
+int ft_strlen(char *s) {
+    int count;
+
+    count = 0;
+    while(*s != '\0') {
+        s++;
         count++;
     }
-    while(limiter != 0 && src[j] != NULL) {
-        dst[i] = src[j];
-        i++;
-        j++;
-        count++;
-    }
-    dst[i] = NULL;
     return count;
 }
