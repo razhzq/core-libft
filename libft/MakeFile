@@ -36,7 +36,6 @@ SRCS = ft_bzero.c \
        ft_putnbr_fd.c \
 
 OFILES = $(SRCS:.c=.o)
-BONUS_OFILES := $(BONUS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 CC = cc
@@ -45,23 +44,18 @@ AR = ar rcs
 all: $(NAME)
 
 $(NAME): $(OFILES)
-    $(AR) $@ $^
+	$(AR) $@ $^
 
 %.o: %.c
-    $(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 fclean: clean
-    rm -f $(NAME)
+	rm -f $(NAME)
 
 clean:
-    rm -f $(OFILES) $(BONUS_OFILES)
+	rm -f $(OFILES)
 
 re: fclean all
 
-bonus: $(OFILES) $(BONUS_OFILES)
-    $(AR) $(NAME) $^
-
-$(BONUS_OFILES): %.o: %.c
-    $(CC) $(CFLAGS) -c $< -o $@
-
 .PHONY: all bonus clean fclean re
+
