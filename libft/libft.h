@@ -5,9 +5,9 @@
 # include <unistd.h>
 # include <stddef.h>
 
-int atoi(const char *str);
-void*   ft_bzero(void *b, size_t len);
-void* calloc(size_t count, size_t size);
+int ft_atoi(const char *str);
+void   ft_bzero(void *b, size_t len);
+void* ft_calloc(size_t count, size_t size);
 int ft_isalnum(int c);
 int	ft_isalpha(int c);
 int ft_isascii(int c);
@@ -24,15 +24,16 @@ void ft_putendl_fd(char *s, int fd);
 void ft_putnbr_fd(int n, int fd);
 void ft_putstr_fd(char *s, int fd);
 char **ft_split(char const *s, char c);
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char* ft_strchr(const char *str, int c);
-char* strdup(const char *s1);
+char* ft_strrchr(const char *str, int c);
+char* ft_strdup(const char *s1);
 void ft_striteri(char *s, void (*f)(unsigned int,char*));
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char *ft_strjoin(char const *s1, char const *s2);
-int ft_strlcat(char *dst, const char *src, size_t dstsize);
-int ft_strlcpy(char *dst, char *src, size_t dstSize);
+size_t ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t ft_strlcpy(char *dst, const char *src, size_t dstSize);
 int ft_strlen(char *s);
-int strncmp(const char *s1, const char *s2 ,size_t n);
+int ft_strncmp(const char *s1, const char *s2, size_t n);
 char* ft_strnstr(const char *haystack, const char *needle, size_t len);
 char *ft_strtrim(char const *s1, char const *set);
 char *ft_substr(char const *s, unsigned int start, size_t len);

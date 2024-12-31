@@ -1,15 +1,15 @@
 #include "libft.h"
 
 
-char* strdup(const char *s1) {
-    int i = 0;
-    int len = ft_strlen(s1);
+char* ft_strdup(const char *s1) {
+    size_t len = ft_strlen((char *)s1) + 1;
 
-    char *temp = (char *)malloc(sizeof(char *) * (len + 1));
-    while (i < len) {
-        temp[i] = s1[i];
-        i++;
-    }
-    temp[i] = '\0';
+    char *temp = (char *)malloc(sizeof(char) * len);
+
+    if(!temp)
+        return NULL;
+    
+    ft_strlcpy(temp, s1, len);
+
     return temp;
 }

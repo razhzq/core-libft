@@ -1,37 +1,31 @@
 #include "libft.h"
 
+
 char *ft_strtrim(char const *s1, char const *set) {
-    int i = 0;
-    int j = 0;
-    int len = 0;
+    int len = ft_strlen((char *)s1);
 
-    while (s1[i] != '\0') {
-        while(set[j] != '\0') {
-            if(s1[i] == set[j]) {
-                len++;
-            }
-            j++;
-        }
-        j = 0;
-        i++;
+    int start = 0;
+    int end = len - 1;
+
+    if(!s1 || !set) 
+        return NULL;
+
+    while(ft_strchr(set, s1[start]) && start <= end) {
+        start++;
+    }
+    if (start > end)
+		return (ft_strdup(s1 + end + 1));
+
+    while(ft_strchr(set, s1[end]) && end >= 0) {
+        end--;
     }
 
-    i = 0;
-    j = 0;
+    char *temp = (char *)malloc(sizeof(char) * (end - start + 2));
 
-    char *temp = (char *)malloc(sizeof(char *) * (len + 1));
+    if(!temp) 
+        return NULL;
 
-    while (i < len) {
-        while(set[j] != '\0') {
-            if(set[j] != s1[i]) {
-                temp[i] = s1[i];
-            }
-            j++;
-        }
-        j = 0;
-        i++;
-    }
-    temp[len] = '\0';
+    ft_strlcpy(temp, &s1[start], (end - start + 2));
 
     return temp;
 }

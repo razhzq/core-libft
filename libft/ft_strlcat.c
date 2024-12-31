@@ -12,22 +12,36 @@
 
 #include "libft.h"
 
-int ft_strlcat(char *dst, const char *src, size_t dstsize) {
-    int count = 0;
-    int i = 0;
-    int j = 0;
-    int limiter = dstsize -1;
+size_t ft_strlcat(char *dst, const char *src, size_t dstsize) {
+    size_t dst_len = 0;
+    size_t src_len = 0;
+    size_t i = 0;
 
-    while(dst[i] != NULL) {
-        i++;
-        count++;
+    // Calculate the lengths of dst and src
+    while (dst[dst_len] != '\0' && dst_len < dstsize) {
+        dst_len++;
     }
-    while(limiter != 0 && src[j] != NULL) {
-        dst[i] = src[j];
-        i++;
-        j++;
-        count++;
+    while (src[src_len] != '\0') {
+        src_len++;
     }
-    dst[i] = NULL;
-    return count;
+
+    // If dstsize is less than or equal to dst_len, return dstsize + src_len
+    if (dstsize <= dst_len) {
+        return dstsize + src_len;
+    }
+
+    // Start appending src to dst
+    i = 0;
+    while (src[i] != '\0' && (dst_len + i) < (dstsize - 1)) {
+        dst[dst_len + i] = src[i];
+        i++;
+    }
+
+    // Null-terminate dst
+    if ((dst_len + i) < dstsize) {
+        dst[dst_len + i] = '\0';
+    }
+
+    // Return the total length of the string that would have been created
+    return dst_len + src_len;
 }

@@ -12,12 +12,6 @@
 
 #include "libft.h"
 
-void*   ft_bzero(void *b, size_t len) {
-    char *temp = (char *)b;
-    while(len != 0) {
-        *temp = '\0';
-        temp++;
-        len--;
-    }
-    return temp;
+void   ft_bzero(void *b, size_t len) {
+    ft_memset(b, '\0', len);
 }

@@ -13,11 +13,6 @@
 #include "libft.h"
 
 char* ft_strchr(const char *str, int c) {
-    
-    if (c == '\0') {
-        return (char *)str;
-    }
-
     while (*str != '\0')
     {
        if(*str == (char)c) {
@@ -25,9 +20,10 @@ char* ft_strchr(const char *str, int c) {
        }
        str++;
     }
+    if (c == '\0') {
+        return (char *)str;
+    }
     return NULL;
-    
-    
 }
 
 
