@@ -18,10 +18,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		start;
 	int		end;
 	char	*temp;
-	size_t	len_n;
 
 	len = ft_strlen((char *)s1);
-	len_n = ft_strlen((char *)set);
 	start = 0;
 	end = len - 1;
 	if (!s1 || !set)

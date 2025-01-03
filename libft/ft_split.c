@@ -69,11 +69,9 @@ char	*allo_string(char *s, char c, int startIndex)
 int	fill_arr(char **arr, char *s, char c)
 {
 	int	i;
-	int	j;
 	int	arr_count;
 
 	i = 0;
-	j = 0;
 	arr_count = 0;
 	while (s[i] != '\0')
 	{
