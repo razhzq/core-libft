@@ -3,23 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muabdul- <muabdul-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: muabdul- <muabdul-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:16:35 by muabdul-          #+#    #+#             */
-/*   Updated: 2024/11/04 21:23:16 by muabdul-         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:02:00 by muabdul-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-int	ft_isalpha(int c) {
+int	ft_isalpha(int c)
+{
 	if (!((c >= 65 && c <= 90) || (c >= 97 && c <= 122)))
-		return 0;
-	return 1;
+		return (0);
+	return (1);
 }
-
-// int main(void) {
-// 	int testChar = 1;
-// 	int test = ft_isalpha(testChar);
-// 	printf("%i", test);
-// 	return 0;
-// }

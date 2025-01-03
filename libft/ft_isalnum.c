@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muabdul- <muabdul-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: muabdul- <muabdul-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:17:28 by muabdul-          #+#    #+#             */
-/*   Updated: 2024/11/04 21:23:27 by muabdul-         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:01:45 by muabdul-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalnum(int c) {
-    if (!(((c >= 65 && c <= 90) || (c >= 97 && c <= 122)) || (c >= 48 && c <= 57)))
-		return 0;
-	return 1;
+int	ft_isalnum(int c)
+{
+	if (!(((c >= 65 && c <= 90) || (c >= 97 && c <= 122)) || (c >= 48
+				&& c <= 57)))
+		return (0);
+	return (1);
 }

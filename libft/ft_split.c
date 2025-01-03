@@ -1,82 +1,113 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: muabdul- <muabdul-@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/03 18:27:26 by muabdul-          #+#    #+#             */
+/*   Updated: 2025/01/03 18:38:57 by muabdul-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdlib.h>
 
-int countSubString(char *s, char c) {
-    unsigned int count = 0;
-    int i = 0;
+int	count_sub_string(char *s, char c)
+{
+	unsigned int	count;
+	int				i;
 
-    while (s[i] != '\0') {
-        while (s[i] == c) // Skip delimiters
-            i++;
-        if (s[i] != '\0') {
-            count++; // Found a substring
-            while (s[i] != '\0' && s[i] != c)
-                i++;
-        }
-    }
-    return count;
+	count = 0;
+	i = 0;
+	while (s[i] != '\0')
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i] != '\0')
+		{
+			count++;
+			while (s[i] != '\0' && s[i] != c)
+				i++;
+		}
+	}
+	return (count);
 }
 
-int countStringLen(char *s, char c, int startIndex) {
-    int len = 0;
-    while (s[startIndex] != '\0' && s[startIndex] != c) {
-        len++;
-        startIndex++;
-    }
-    return len;
+int	count_string_len(char *s, char c, int startIndex)
+{
+	int	len;
+
+	len = 0;
+	while (s[startIndex] != '\0' && s[startIndex] != c)
+	{
+		len++;
+		startIndex++;
+	}
+	return (len);
 }
 
-char *alloString(char *s, char c, int startIndex) {
-    int len = countStringLen(s, c, startIndex);
-    char *temp = (char *)malloc(sizeof(char) * (len + 1)); // +1 for null terminator
+char	*allo_string(char *s, char c, int startIndex)
+{
+	int		len;
+	int		i;
+	char	*temp;
 
-    if (temp == NULL)
-        return NULL;
-
-    for (int i = 0; i < len; i++) {
-        temp[i] = s[startIndex + i];
-    }
-    temp[len] = '\0'; // Add null terminator
-    return temp;
+	i = 0;
+	len = count_string_len(s, c, startIndex);
+	temp = (char *)malloc(sizeof(char) * (len + 1));
+	if (temp == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		temp[i] = s[startIndex + i];
+		i++;
+	}
+	temp[len] = '\0';
+	return (temp);
 }
 
-int fillArr(char **arr, char *s, char c) {
-    int i = 0;
-    int arrCount = 0;
+int	fill_arr(char **arr, char *s, char c)
+{
+	int	i;
+	int	j;
+	int	arr_count;
 
-    while (s[i] != '\0') {
-        while (s[i] == c) // Skip delimiters
-            i++;
-        if (s[i] != '\0') {
-            arr[arrCount] = alloString(s, c, i);
-            if (arr[arrCount] == NULL) { // Handle allocation failure
-                for (int j = 0; j < arrCount; j++)
-                    free(arr[j]);
-                return 1;
-            }
-            arrCount++;
-            while (s[i] != '\0' && s[i] != c) // Skip current substring
-                i++;
-        }
-    }
-    return 0;
+	i = 0;
+	j = 0;
+	arr_count = 0;
+	while (s[i] != '\0')
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i] != '\0')
+		{
+			arr[arr_count] = allo_string(s, c, i);
+			if (arr[arr_count] == NULL)
+				return (1);
+			arr_count++;
+			while (s[i] != '\0' && s[i] != c)
+				i++;
+		}
+	}
+	return (0);
 }
 
-char **ft_split(char const *s, char c) {
-    if (s == NULL)
-        return NULL;
+char	**ft_split(char const *s, char c)
+{
+	unsigned int	count;
+	char			**temp;
 
-    unsigned int count = countSubString((char *)s, c);
-
-    char **temp = (char **)malloc(sizeof(char *) * (count + 1)); // +1 for NULL pointer
-    if (temp == NULL)
-        return NULL;
-
-    if (fillArr(temp, (char *)s, c) == 1) { // Check allocation failure
-        free(temp);
-        return NULL;
-    }
-
-    temp[count] = NULL; // Null-terminate the array
-    return temp;
+	if (s == NULL)
+		return (NULL);
+	count = count_sub_string((char *)s, c);
+	temp = (char **)malloc(sizeof(char *) * (count + 1));
+	if (temp == NULL)
+		return (NULL);
+	if (fill_arr(temp, (char *)s, c) == 1)
+	{
+		free(temp);
+		return (NULL);
+	}
+	temp[count] = NULL;
+	return (temp);
 }
