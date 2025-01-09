@@ -3,7 +3,7 @@
 
 #include <stdarg.h>
 
-
+int	format_number(int num);
 
 #endif
 

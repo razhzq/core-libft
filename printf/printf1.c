@@ -54,26 +54,13 @@ int ft_printf(const char *format, ...) {
             if(format[i + 1] == 'c' || format[i + 1] == 's' || format[i + 1] == '%')
                 len += print_str(va_arg(list, char));
             if(format[i + 1] == 'd' || format[i + 1] == 'i' || format[i + 1] == 'u') {
-                temp = ft_itoa(va_arg(list, char));
-                len += print_str(temp);
-                free(temp);
-            }
-            if(format[i + 1] == 'x') {
-                temp = convert_num_to_hex((unsigned long int)va_arg(list, int), 0);
-                len += print_str(temp);
-                free(temp);
-            }
-            if(format[i + 1] == 'X') {
-                temp = convert_num_to_hex((unsigned long int)va_arg(list, int), 0);
-                convert_to_upper(temp);
-                len += print_str(temp);
-                free(temp); 
-            }
-            if(format[i + 1] == 'p') {
-                temp = convert_address_to_hex((unsigned long int)va_arg(list, void *), 1);
-                len += print_str(temp);
-                free(temp);
-            }
+                len += format_number((int)va_arg(list, int));
+            if(format[i + 1] == 'x')
+                len += format_hex((unsigned long int)va_arg(list, int), 0, 0);
+            if(format[i + 1] == 'X') 
+                len += format_hex((unsigned long int)va_arg(list, int), 1, 0);
+            if(format[i + 1] == 'p')
+                len += format_hex((unsigned long int)va_arg(list, int), 0, 1);
             i += 2;
         } else {
             write(1, &format[i], 1);
@@ -83,3 +70,6 @@ int ft_printf(const char *format, ...) {
     }
     return (len);
 }
+}
+
+
