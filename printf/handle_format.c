@@ -17,6 +17,7 @@ int	format_number(int num)
 	int		len;
 	char	*temp;
 	
+	len = 0;
 	temp = ft_itoa(num);
 	len += print_str(temp);
 	return (len);
@@ -25,18 +26,51 @@ int	format_number(int num)
 int	format_hex(unsigned long int num, int is_uppercase, int is_address)
 {
 	int		len;
-	char	*temp;
 
-	if (is_address == 1)
-		temp = conv_hex(num, 1);
-	if (is_uppercase == 1 && is_address == 0) 
-	{
-		temp = conv_hex(num, 0);
-		convert_to_upper(temp);	
-	}
-	if (is_uppercase == 0 && is_address == 0)
-		temp = conv_hex(num, 0);
-	len =+ print_str(temp);
+	len = 0;
+	len += conv_hex(num, is_address, is_uppercase);
 	return (len);
 }
+
+int conv_hex(unsigned long int num, int is_address, int is_upper) {
+    const char *base = "0123456789abcdef";
+    char result[32];
+    int len;
+    int i;
+
+    len = 0;
+    i = 0;
+    if (is_address == 1) 
+    {
+        ft_putstr_fd("0x", 1);
+        len += 2;
+    }
+    while (num > 0) 
+    {
+        result[i++] = base[num % 16];
+        num /= 16;
+        len++;
+    }
+    while (i > 0)
+    {
+        if (is_upper == 1)
+            ft_putchar_fd(ft_toupper(result[--i]), 1);
+        else
+            ft_putchar_fd(result[--i], 1);
+    }
+    return len;
+}
+
+int    print_str(char *c) {
+    int len = 0;
+
+    while (*c)
+    {
+        write(1, c, 1);
+        c++;
+        len++;
+    }
+    return (len);
+}
+
 
