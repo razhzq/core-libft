@@ -6,7 +6,7 @@ AR				=	ar
 ARFLAGS 		=	rcs
 RM				=	rm -rf
 
-SRC				=	ft_printf handle_format utils
+SRC				=	ft_printf handle_format
 SRCS 			=	$(addsuffix .c, $(SRC))
 
 OBJ_DIR			=	obj

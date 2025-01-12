@@ -2,7 +2,7 @@
 # define PRINTF_H
 
 #include <stdarg.h>
-# include <limits.h>
+# include <stdint.h>
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
