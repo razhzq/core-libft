@@ -14,12 +14,14 @@ void	process_format(const char *format, va_list *list, int *len)
 		ft_putchar_fd('%', 1);
 		(*len)++;
 	}
-	else if (*format == 'd' || *format == 'i' || *format == 'u')
+	else if (*format == 'd' || *format == 'i')
 		*len += format_number((int)va_arg(*list, int));
+	else if (*format == 'u')
+		*len += format_unsigned(va_arg(*list, unsigned int));
 	else if (*format == 'x')
-		*len += format_hex((unsigned long int)va_arg(*list, int), 0, 0);
+		*len += format_hex(va_arg(*list, unsigned int), 0, 0);
 	else if (*format == 'X')
-		*len += format_hex((unsigned long int)va_arg(*list, int), 1, 0);
+		*len += format_hex(va_arg(*list, unsigned int), 1, 0);
 	else if (*format == 'p')
 		*len += format_hex(va_arg(*list, uintptr_t), 0, 1);
 }

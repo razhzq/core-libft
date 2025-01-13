@@ -6,7 +6,7 @@ AR				=	ar
 ARFLAGS 		=	rcs
 RM				=	rm -rf
 
-SRC				=	ft_printf handle_format
+SRC				=	ft_printf handle_format itoa_unsigned
 SRCS 			=	$(addsuffix .c, $(SRC))
 
 OBJ_DIR			=	obj

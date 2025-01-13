@@ -20,14 +20,37 @@ int	format_number(int num)
 	len = 0;
 	temp = ft_itoa(num);
 	len += print_str(temp);
+    free(temp);
+	return (len);
+}
+
+int format_unsigned(unsigned int num)
+{
+    int		len;
+    char    *temp;
+	
+	len = 0;
+	temp = ft_itoa_unsigned(num);
+	len += print_str(temp);
+    free(temp);
 	return (len);
 }
 
 int	format_hex(unsigned long int num, int is_uppercase, int is_address)
 {
-	int		len;
+	int	len;
 
 	len = 0;
+    if (is_address != 1 && num == 0)
+    {
+        ft_putchar_fd('0', 1);
+        return (1);
+    }
+    if (is_address == 1 && num == 0) 
+    {
+        ft_putstr_fd("0x0", 1);
+        return (3);
+    }
 	len += conv_hex(num, is_address, is_uppercase);
 	return (len);
 }
@@ -64,7 +87,13 @@ int conv_hex(unsigned long int num, int is_address, int is_upper) {
 int    print_str(char *c) {
     int len = 0;
 
-    while (*c)
+    if (!c) 
+    {
+        write(1, "(null)", 6);
+        return 6;
+    }
+
+    while (*c != '\0')
     {
         write(1, c, 1);
         c++;
